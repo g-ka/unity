@@ -1,13 +1,361 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+:root {
+  --primary: #466cb1;
+  --secondary: #e9f5ce;
+  --primary_hover: #6c83ae;
+  --bg: rgb(233, 233, 233);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  padding: 0.5rem 4rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+.header_name {
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: white;
+}
+.header_nav {
+  display: flex;
+  align-items: center;
+  column-gap: 4rem;
+}
+.header_nav_home, .header_nav_teams {
+  text-decoration: none;
+  color: white;
+}
+.header_nav_home:hover, .header_nav_teams:hover {
+  color: var(--primary);
+}
+
+.footer {
+  background-color: var(--primary);
+  padding: 1rem 0;
+  margin-top: 3rem;
+}
+.footer_desc {
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
+}
+
+.filter_section {
+  padding-top: 6rem;
+  display: flex;
+  justify-content: center;
+}
+.filter_section_box {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 3rem;
+}
+.filter_section_box_search {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 1.2rem;
+}
+.filter_section_box_filters {
+  display: flex;
+  column-gap: 2rem;
+}
+.filter_section_box_filters div label {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+.filter_section_box_filters div select {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 1.2rem;
+}
+
+.professionals_section {
+  position: relative;
+}
+.professionals_section_loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 100%;
+}
+.professionals_section_loading p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.professionals_section_list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 6rem 4rem 4rem 4rem;
+}
+.professionals_section_list_card {
+  max-width: 38rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  border: 5px solid var(--primary);
+  background-color: var(--secondary);
+}
+.professionals_section_list_card_header {
+  text-align: center;
+  background-color: var(--primary);
+  color: white;
+  text-transform: capitalize;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  font-size: 1.1rem;
+  padding: 0.2rem 0;
+}
+.professionals_section_list_card_body {
+  display: flex;
+  align-items: center;
+  column-gap: 4rem;
+  padding: 2rem 3rem;
+}
+@media only screen and (max-width: 768px) {
+  .professionals_section_list_card_body {
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+}
+.professionals_section_list_card_body_image {
+  width: 150px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 5px solid var(--primary);
+}
+@media only screen and (max-width: 768px) {
+  .professionals_section_list_card_body_image {
+    width: 170px;
+  }
+}
+.professionals_section_list_card_body_basic_info {
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+}
+@media only screen and (max-width: 768px) {
+  .professionals_section_list_card_body_basic_info {
+    align-items: center;
+    text-align: center;
+  }
+}
+.professionals_section_list_card_body_basic_info_name {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.professionals_section_list_card_body_basic_info_gender {
+  font-size: 1.2rem;
+}
+.professionals_section_list_card_body_basic_info_add {
+  display: flex;
+  column-gap: 0.5rem;
+  margin-top: 2rem;
+}
+.professionals_section_list_card_body_basic_info_add button {
+  padding: 0.6rem 1rem;
+  background-color: var(--primary);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  text-transform: capitalize;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.professionals_section_list_card_body_basic_info_add button:hover {
+  background-color: var(--primary_hover);
+}
+
+.pagination_section {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+.pagination_section_toggle {
+  display: flex;
+  column-gap: 1rem;
+  align-items: center;
+}
+.pagination_section_toggle_number {
+  font-size: 1.2rem;
+}
+.pagination_section_toggle_previous, .pagination_section_toggle_next {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.team_section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 2rem;
+}
+.team_section_desc p {
+  width: 400px;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+.team_section_creation {
+  display: flex;
+  column-gap: 1rem;
+}
+.team_section_creation input {
+  width: 40vw;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 1.2rem;
+}
+.team_section_creation button {
+  padding: 0.6rem 1rem;
+  background-color: var(--primary);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  text-transform: capitalize;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.team_section_creation button:hover {
+  background-color: var(--primary_hover);
+}
+
+.team_section_loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 100%;
+}
+.team_section_loading p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.team_section_name {
+  font-size: 1.5rem;
+  margin-top: 7rem;
+  font-weight: bold;
+}
+.team_section_msg {
+  text-align: center;
+  font-size: 1.1rem;
+}
+.team_section_list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 2rem 4rem 4rem 4rem;
+}
+.team_section_list_card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  border: 5px solid var(--primary);
+  background-color: var(--secondary);
+}
+.team_section_list_card_header {
+  text-align: center;
+  background-color: var(--primary);
+  color: white;
+  text-transform: capitalize;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  font-size: 1.1rem;
+  padding: 0.2rem 0;
+}
+.team_section_list_card_body {
+  display: flex;
+  align-items: center;
+  column-gap: 4rem;
+  padding: 2rem 3rem;
+}
+@media only screen and (max-width: 768px) {
+  .team_section_list_card_body {
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+}
+.team_section_list_card_body_image {
+  width: 150px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 5px solid var(--primary);
+}
+@media only screen and (max-width: 768px) {
+  .team_section_list_card_body_image {
+    width: 170px;
+  }
+}
+.team_section_list_card_body_basic_info {
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+}
+@media only screen and (max-width: 768px) {
+  .team_section_list_card_body_basic_info {
+    align-items: center;
+    text-align: center;
+  }
+}
+.team_section_list_card_body_basic_info_name {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.team_section_list_card_body_basic_info_gender {
+  font-size: 1.2rem;
+}
+.team_section_list_card_body_basic_info_add {
+  display: flex;
+  column-gap: 0.5rem;
+  margin-top: 2rem;
+}
+.team_section_list_card_body_basic_info_add button {
+  padding: 0.6rem 1rem;
+  background-color: var(--primary);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  text-transform: capitalize;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.team_section_list_card_body_basic_info_add button:hover {
+  background-color: var(--primary_hover);
+}
+
+/*# sourceMappingURL=index.css.map */

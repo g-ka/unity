@@ -1,0 +1,41 @@
+.filter_section{
+  padding-top: 6rem;
+  display: flex;
+  justify-content: center;
+
+  &_box{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 3rem;    
+
+    &_search{
+      width: 100%;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      border: 1px solid black;
+      font-size: 1.2rem;
+    }
+
+    &_filters{
+      display: flex;
+      column-gap: 2rem;
+
+      div{      
+
+        label{
+          font-size: 1.2rem;
+          margin-right: 0.5rem;
+        }
+
+        select{                
+          padding: 0.5rem 1rem;
+          border-radius: 5px;
+          border: 1px solid black;
+          font-size: 1.2rem;
+        }
+      }    
+    }
+  }
+}

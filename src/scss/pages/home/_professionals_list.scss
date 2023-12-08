@@ -1,0 +1,110 @@
+@use "../../abstract/media_queries" as mq;
+
+.professionals_section{
+  position: relative;
+
+  &_loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 100%;
+
+    p{
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+
+  &_list{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 6rem 4rem 4rem 4rem;
+
+    &_card{  
+      max-width: 38rem;
+      display: flex;
+      flex-direction: column; 
+      border-radius: 30px;
+      border: 5px solid var(--primary);
+      background-color: var(--secondary);
+    
+      &_header{
+        text-align: center;
+        background-color: var(--primary);
+        color: white;
+        text-transform: capitalize;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+        font-size: 1.1rem;
+        padding: 0.2rem 0;
+      }              
+    
+      &_body{
+        display: flex;
+        align-items: center;
+        column-gap: 4rem;
+        padding: 2rem 3rem;    
+    
+        @include mq.responsive('md')
+        {
+          flex-direction: column;
+          row-gap: 2rem;
+        }
+    
+        &_image{
+          width: 150px;
+          aspect-ratio: 1/1;
+          border-radius: 50%;
+          border: 5px solid var(--primary);
+    
+          @include mq.responsive('md')
+          {
+            width: 170px;
+          }
+        }
+      
+        &_basic_info{
+          display: flex;
+          flex-direction: column;
+          text-transform: capitalize;
+    
+          @include mq.responsive('md')
+          {
+            align-items: center;
+            text-align: center;
+          }
+      
+          &_name{
+            font-size: 2rem;
+            font-weight: 700;        
+          }
+          &_gender{
+            font-size: 1.2rem;      
+          }
+          &_add{
+            display: flex;
+            column-gap: 0.5rem;
+            margin-top: 2rem;        
+    
+            button{
+              padding: 0.6rem 1rem;
+              background-color: var(--primary);
+              color: white;
+              font-size: 1.1rem;
+              font-weight: 600;
+              border: none;
+              text-transform: capitalize;
+              border-radius: 5px;
+              cursor: pointer;
+            }        
+            button:hover{
+              background-color: var(--primary_hover);
+            }
+          }
+        }
+      }    
+    }
+  }
+}
