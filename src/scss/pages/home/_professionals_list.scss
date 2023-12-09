@@ -1,19 +1,5 @@
 @use "../../abstract/media_queries" as mq;
 
-
-.open_load{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 500px;
-  width: 100%;
-
-  p{
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-}
-
 .professionals_section{
   position: relative;
 

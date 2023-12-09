@@ -7,8 +7,7 @@ import Footer from './components/Footer';
 import { useEffect, useState } from 'react';
 
 function App() {
-
-  const [ is_loading, set_is_loading ] = useState(true);
+  
   const [ is_session_loading, set_is_session_loading ] = useState(true);
   const [ err_msg, set_err_msg ] = useState('');
 
@@ -43,7 +42,7 @@ function App() {
     <>
       <Header />
       {
-        is_session_loading || is_loading ?
+        is_session_loading ?
           <div className='open_loading'>
             <p>Loading...</p>
           </div> :
@@ -51,10 +50,7 @@ function App() {
              <p>{err_msg}</p> :
               <main>
                 <Routes>
-                  <Route path='/' element={<Home 
-                    is_loading={is_loading}
-                    set_is_loading={set_is_loading}
-                  />} />
+                  <Route path='/' element={<Home />} />
                   <Route path='/team' element={<Team />} />
                 </Routes>
               </main>   
