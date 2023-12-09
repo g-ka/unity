@@ -4,7 +4,7 @@ import Filters from './Filters';
 import Professionals_list from './Professionals_list';
 import Home_pagination from './Home_pagination';
 
-const Home = () => {
+const Home = ({ is_loading, set_is_loading }) => {
 
   const [ page_number, set_page_number ] = useState(1);
   const [ professionals_list, set_professionals_list ] = useState([]);
@@ -15,7 +15,6 @@ const Home = () => {
   const [ gender, set_gender ] = useState('All');
   const [ avail, set_avail ] = useState('All');
 
-  const [ is_loading, set_is_loading ] = useState(true);
   const [ pl_fetch_err, set_pl_fetch_err ] = useState('');
 
   useEffect(() =>
