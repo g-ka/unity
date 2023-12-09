@@ -50,6 +50,12 @@ const Professionals_list = ({ is_loading, professionals_list }) => {
     }
   };
 
+  const update_handler = () =>
+  {
+    set_prof_id(professional.id);
+    set_edit(prev => !prev);
+  }
+
   return (
     <section className='professionals_section'>
       <p style={clash_msg_style}>Clash: {clash_msg}</p>
@@ -78,13 +84,7 @@ const Professionals_list = ({ is_loading, professionals_list }) => {
                             </div>     
                             <div className='professionals_section_list_card_body_basic_info_add'>
                               <button onClick={() => team_add_handler(professional.id)}>add</button>   
-                              <button onClick={() => 
-                                {
-                                  set_prof_id(professional.id);
-                                  set_edit(prev => !prev);
-                                }}>
-                                update
-                              </button>     
+                              <button onClick={update_handler}>update</button>     
                               <button>delete</button>   
                             </div>                 
                           </div>          
