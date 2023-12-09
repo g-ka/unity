@@ -3,7 +3,7 @@ import Axios from '../../api/Axios';
 import { faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Professionals_list = ({ professionals_list }) => {
+const Professionals_list = ({ is_loading, professionals_list }) => {
 
   const [ clash_msg, set_clash_msg ] = useState('');
 
@@ -51,36 +51,40 @@ const Professionals_list = ({ professionals_list }) => {
     <section className='professionals_section'>
       <p style={clash_msg_style}>Clash: {clash_msg}</p>
       {
-        <ul className='professionals_section_list'>
-          {
-            professionals_list.map(professional =>
+        is_loading ?
+          <div className='professionals_section_loading'>
+            <p>Loading...</p>
+          </div> :
+            <ul className='professionals_section_list'>
               {
-                return(
-                  <li className='professionals_section_list_card' key={professional.id}>
-                    <p className='professionals_section_list_card_header'>{professional.domain}</p>
-                    <div className='professionals_section_list_card_body'>
-                      <img src={professional.avatar} className='professionals_section_list_card_body_image' />
-                      <div className='professionals_section_list_card_body_basic_info'>
-                        <p className='professionals_section_list_card_body_basic_info_name'>{professional.first_name} {professional.last_name}</p>
-                        <p className='professionals_section_list_card_body_basic_info_gender'>{professional.gender}</p>
-                        <p className='professionals_section_list_card_body_basic_info_email'>{professional.email}</p>
-                        <div className='professionals_section_list_card_body_basic_info_avail'>
-                          {
-                            professional.available ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faX} />
-                          }                                                
-                        </div>     
-                        <div className='professionals_section_list_card_body_basic_info_add'>
-                          <button onClick={() => team_add_handler(professional.id)}>add</button>   
-                          <button>update</button>   
-                          <button>delete</button>   
-                        </div>                 
-                      </div>          
-                    </div>                     
-                  </li>
-                )
-              })
-          }
-        </ul>  
+                professionals_list.map(professional =>
+                  {
+                    return(
+                      <li className='professionals_section_list_card' key={professional.id}>
+                        <p className='professionals_section_list_card_header'>{professional.domain}</p>
+                        <div className='professionals_section_list_card_body'>
+                          <img src={professional.avatar} className='professionals_section_list_card_body_image' />
+                          <div className='professionals_section_list_card_body_basic_info'>
+                            <p className='professionals_section_list_card_body_basic_info_name'>{professional.first_name} {professional.last_name}</p>
+                            <p className='professionals_section_list_card_body_basic_info_gender'>{professional.gender}</p>
+                            <p className='professionals_section_list_card_body_basic_info_email'>{professional.email}</p>
+                            <div className='professionals_section_list_card_body_basic_info_avail'>
+                              {
+                                professional.available ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faX} />
+                              }                                                
+                            </div>     
+                            <div className='professionals_section_list_card_body_basic_info_add'>
+                              <button onClick={() => team_add_handler(professional.id)}>add</button>   
+                              <button>update</button>   
+                              <button>delete</button>   
+                            </div>                 
+                          </div>          
+                        </div>                     
+                      </li>
+                    )
+                  })
+              }
+            </ul>  
       }          
     </section>
   )

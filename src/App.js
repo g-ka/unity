@@ -43,7 +43,9 @@ function App() {
       <Header />
       {
         is_loading ?
-          <p>Loading...</p> :
+          <div className='open_loading'>
+            <p>Loading...</p>
+          </div> :
             err_msg ?
              <p>{err_msg}</p> :
               <main>
