@@ -96,6 +96,18 @@ body {
   font-size: 1.2rem;
 }
 
+.open_load {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 100%;
+}
+.open_load p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 .professionals_section {
   position: relative;
 }
