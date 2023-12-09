@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Professionals_list = ({ is_loading, professionals_list }) => {
 
-  const { set_edit } = useData();
+  const { set_edit, set_prof_id } = useData();
 
   const [ clash_msg, set_clash_msg ] = useState('');
 
