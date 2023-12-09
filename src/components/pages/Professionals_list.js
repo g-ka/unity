@@ -80,7 +80,7 @@ const Professionals_list = ({ is_loading, professionals_list }) => {
                               <button onClick={() => team_add_handler(professional.id)}>add</button>   
                               <button onClick={() => 
                                 {
-                                  set_prof_id(professional.id)
+                                  set_prof_id(professional.id);
                                   set_edit(prev => !prev);
                                 }}>
                                 update
