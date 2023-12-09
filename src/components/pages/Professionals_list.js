@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import Axios from '../../api/Axios';
+import useData from '../../hooks/useData';
 import { faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Professionals_list = ({ is_loading, professionals_list }) => {
+
+  const { set_edit } = useData();
 
   const [ clash_msg, set_clash_msg ] = useState('');
 
@@ -75,7 +78,13 @@ const Professionals_list = ({ is_loading, professionals_list }) => {
                             </div>     
                             <div className='professionals_section_list_card_body_basic_info_add'>
                               <button onClick={() => team_add_handler(professional.id)}>add</button>   
-                              <button>update</button>   
+                              <button onClick={() => 
+                                {
+                                  set_prof_id(professional.id)
+                                  set_edit(prev => !prev);
+                                }}>
+                                update
+                              </button>     
                               <button>delete</button>   
                             </div>                 
                           </div>          
