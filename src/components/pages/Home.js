@@ -49,32 +49,39 @@ const Home = () => {
 
   return(
     <>
-      <Filters 
-        page_number={page_number}
-        set_page_number={set_page_number}
-        set_professionals_list={set_professionals_list}
-        domain={domain}
-        set_domain={set_domain}
-        gender={gender}
-        set_gender={set_gender}
-        avail={avail}
-        set_avail={set_avail}
-        search={search}
-        set_search={set_search}
-      />
-      <Professionals_list 
-        is_loading={is_loading}
-        professionals_list={professionals_list}
-      />
       {
-        search === '' ?
-          <Home_pagination 
-            page_number={page_number}
-            set_page_number={set_page_number}
-          /> :
-            <></>
-      }      
-    </>    
+        is_loading ?
+            <div className='open_loading'>
+              <p>Loading...</p>
+            </div> :
+              <>
+                <Filters 
+                  page_number={page_number}
+                  set_page_number={set_page_number}
+                  set_professionals_list={set_professionals_list}
+                  domain={domain}
+                  set_domain={set_domain}
+                  gender={gender}
+                  set_gender={set_gender}
+                  avail={avail}
+                  set_avail={set_avail}
+                  search={search}
+                  set_search={set_search}
+                />
+                <Professionals_list 
+                  professionals_list={professionals_list}
+                />
+                {
+                  search === '' ?
+                    <Home_pagination 
+                      page_number={page_number}
+                      set_page_number={set_page_number}
+                    /> :
+                      <></>
+                }      
+              </> 
+      }   
+    </>        
   )
 }
 
