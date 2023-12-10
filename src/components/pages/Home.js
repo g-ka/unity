@@ -48,7 +48,7 @@ const Home = () => {
     };
 
     fetch_professionals(page_number);
-  }, [page_number, domain, gender, avail, edit, professionals_list]);
+  }, [page_number, domain, gender, avail, edit]);
 
   return(
     <>
