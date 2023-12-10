@@ -3,8 +3,11 @@ import Axios from '../../api/Axios';
 import Filters from './Filters';
 import Professionals_list from './Professionals_list';
 import Home_pagination from './Home_pagination';
+import useData from '../../hooks/useData';
 
 const Home = () => {
+
+  const { edit } = useData();
 
   const [ page_number, set_page_number ] = useState(1);
   const [ professionals_list, set_professionals_list ] = useState([]);
@@ -45,7 +48,7 @@ const Home = () => {
     };
 
     fetch_professionals(page_number);
-  }, [page_number, domain, gender, avail]);
+  }, [page_number, domain, gender, avail, edit]);
 
   return(
     <>
