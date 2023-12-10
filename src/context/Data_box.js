@@ -6,7 +6,7 @@ const Data_provider = ({children}) =>
 {
 
   const [ edit, set_edit ] = useState(false);
-  const [ prof_id, set_prof_id ] = useState(null);
+  const [ prof_id, set_prof_id ] = useState('');
 
   return(
     <Data_box.Provider
