@@ -78,7 +78,7 @@ const Professionals_list = ({ is_loading, professionals_list }) => {
                             </div>     
                             <div className='professionals_section_list_card_body_basic_info_add'>
                               <button onClick={() => team_add_handler(professional.id)}>add</button>   
-                              <button onClick={() => { set_edit(prev => !prev); set_prof_id(professional.id); }}>
+                              <button onClick={() => { set_edit(true); set_prof_id(professional.id); }}>
                                 update
                               </button>     
                               <button>delete</button>   
