@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Axios from '../../api/Axios';
 
 const Filters = ({
-  page_number,
   set_page_number,
-  set_professionals_list,
   domain,
   set_domain,
   gender,
@@ -15,44 +11,6 @@ const Filters = ({
   search,
   set_search
 }) => {
-
-  useEffect(() =>
-  {
-    const cancelTokenSource = axios.CancelToken.source();
-
-    const search_handler = async () =>
-    {
-      try
-      {
-        const response = await Axios.post(
-          '/search',          
-          { search, page_number },
-          {
-            cancelToken: cancelTokenSource.token,
-            headers :{ "Content-Type": 'application/json' },
-            withCredentials: true
-          }
-        );
-
-        if(response.status === 200) set_professionals_list(response.data.search_list);     
-      }
-      catch(err)
-      {
-        // if (axios.isCancel(err)) {
-        //   console.log('Request cancelled:', err.message);
-        // } else {
-        //   console.error('Error:', err.message);
-        // }
-        return
-      }      
-    };
-
-    search_handler();
-
-    return () => {
-      cancelTokenSource.cancel('Request cancelled due to component unmount');
-    };
-  }, [search]);
 
   return (
     <section className='filter_section'>
@@ -85,7 +43,7 @@ const Filters = ({
               <option value="IT">IT</option>
               <option value="Management">Management</option>
               <option value="UI Designing">UI Designing</option>
-              <option value="UI Designing">Business Development</option>
+              <option value="Business Development">Business Development</option>
             </select>            
           </div>
           <div>

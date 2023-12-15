@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Axios from '../../api/Axios';
 import Filters from './Filters';
 import Professionals_list from './Professionals_list';
@@ -23,6 +24,8 @@ const Home = () => {
 
   useEffect(() =>
   {
+    const cancelTokenSource = axios.CancelToken.source();
+
     const fetch_professionals = async (page_number) =>
     {
       try
@@ -30,6 +33,7 @@ const Home = () => {
         const response = await Axios.get(
           `/fetch_professionals?page_number=${page_number}&domain=${domain}&gender=${gender}&avail=${avail}`,
           {
+            cancelToken: cancelTokenSource.token,
             headers: {"Content-Type": 'application/json'},
             withCredentials: true
           }
@@ -48,14 +52,16 @@ const Home = () => {
     };
 
     fetch_professionals(page_number);
-  }, [page_number, domain, gender, avail, edit]);
+
+    return () => {
+      cancelTokenSource.cancel('Request cancelled due to component unmount');
+    };
+  }, [page_number, domain, gender, avail, search, edit]);
 
   return(
     <>
       <Filters 
-        page_number={page_number}
         set_page_number={set_page_number}
-        set_professionals_list={set_professionals_list}
         domain={domain}
         set_domain={set_domain}
         gender={gender}
