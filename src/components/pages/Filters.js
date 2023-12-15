@@ -22,6 +22,10 @@ const Filters = ({
 
     const search_handler = async () =>
     {
+      set_domain('All');
+      set_gender('All');
+      set_avail('All');
+
       try
       {
         const response = await Axios.post(
@@ -34,13 +38,7 @@ const Filters = ({
           }
         );
 
-        if(response.status === 200) 
-        {          
-          set_professionals_list(response.data.search_list);
-          set_domain('All');
-          set_gender('All');
-          set_avail('All');
-        }
+        if(response.status === 200) set_professionals_list(response.data.search_list);     
       }
       catch(err)
       {
