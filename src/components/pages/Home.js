@@ -25,8 +25,6 @@ const Home = () => {
   {
     const fetch_professionals = async (page_number) =>
     {
-      set_search('');
-
       try
       {
         const response = await Axios.get(
