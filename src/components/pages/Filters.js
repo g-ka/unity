@@ -34,7 +34,13 @@ const Filters = ({
           }
         );
 
-        if(response.status === 200) set_professionals_list(response.data.search_list);
+        if(response.status === 200) 
+        {          
+          set_professionals_list(response.data.search_list);
+          set_domain('All');
+          set_gender('All');
+          set_avail('All');
+        }
       }
       catch(err)
       {

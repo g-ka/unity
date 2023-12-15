@@ -35,7 +35,11 @@ const Home = () => {
           }
         );
 
-        if(response.status === 200) set_professionals_list(response.data.professionals_list);
+        if(response.status === 200) 
+        {
+          set_professionals_list(response.data.professionals_list);
+          set_search('');
+        }
       }
       catch(err)
       {
