@@ -31,7 +31,7 @@ const Home = () => {
       try
       {
         const response = await Axios.get(
-          `/fetch_professionals?page_number=${page_number}&domain=${domain}&gender=${gender}&avail=${avail}`,
+          `/fetch_professionals?page_number=${page_number}&domain=${domain}&gender=${gender}&avail=${avail}&search=${search}`,
           {
             cancelToken: cancelTokenSource.token,
             headers: {"Content-Type": 'application/json'},
